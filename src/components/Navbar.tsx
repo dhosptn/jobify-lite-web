@@ -185,28 +185,6 @@ const Navbar = () => {
                 </NavLink>
               </motion.div>
             )}
-
-            {user?.role === 'admin' && (
-              <motion.div
-                variants={navItemVariants}
-                whileHover='hover'
-                whileTap='tap'
-              >
-                <NavLink
-                  to='/admin'
-                  className={({ isActive }) =>
-                    `flex items-center px-1 pt-1 text-sm font-medium transition-all ${
-                      isActive
-                        ? 'text-blue-600 border-b-2 border-blue-500'
-                        : 'text-gray-600 hover:text-blue-500'
-                    }`
-                  }
-                >
-                  <UserRound className='mr-2 h-4 w-4' />
-                  Admin
-                </NavLink>
-              </motion.div>
-            )}
           </div>
 
           {/* User Actions - Desktop */}
@@ -374,29 +352,6 @@ const Navbar = () => {
               >
                 <FileText className='mr-3 h-5 w-5' />
                 Lamaran Saya
-              </NavLink>
-            </motion.div>
-          )}
-
-          {user?.role === 'admin' && (
-            <motion.div
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.35 }}
-            >
-              <NavLink
-                to='/admin'
-                onClick={() => setMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-3 text-base font-medium transition-all ${
-                    isActive
-                      ? 'bg-blue-50 text-blue-600 border-l-4 border-blue-500'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-blue-500'
-                  }`
-                }
-              >
-                <UserRound className='mr-3 h-5 w-5' />
-                Admin
               </NavLink>
             </motion.div>
           )}

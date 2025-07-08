@@ -1,17 +1,15 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const PrivateRoute = ({ roles }) => {
+const PrivateRoute = () => {
   const { user } = useAuth();
 
+  // Jika belum login, arahkan ke halaman login
   if (!user) {
-    return <Navigate to='/login' />;
+    return <Navigate to='/login' replace />;
   }
 
-  if (roles && !roles.includes(user.role)) {
-    return <Navigate to='/' />;
-  }
-
+  // Jika sudah login, tampilkan komponen anak (protected route)
   return <Outlet />;
 };
 
