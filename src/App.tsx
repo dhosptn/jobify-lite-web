@@ -51,10 +51,6 @@ function App() {
             <Route path='/register' element={<Register />} />
 
             {/* Admin Routes */}
-            <Route element={<PrivateRoute roles={['admin']} />}>
-              <Route path='/admin' element={<AdminDashboard />} />
-              <Route path='/admin/add-job' element={<AddJob />} />
-            </Route>
 
             {/* Company Routes */}
 

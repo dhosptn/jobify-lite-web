@@ -10,6 +10,107 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
+// Define prop types for better type checking
+const SuccessStoryCard = ({ quote, author }) => (
+  <motion.div
+    variants={{
+      hidden: { y: 20, opacity: 0 },
+      visible: { y: 0, opacity: 1 },
+    }}
+    whileHover={{ y: -5 }}
+    className='bg-white p-6 rounded-xl shadow-lg backdrop-blur-sm bg-opacity-90'
+  >
+    <div className='flex flex-col h-full'>
+      <FaQuoteLeft className='text-blue-500 text-2xl mb-4 opacity-30' />
+      <p className='text-gray-700 italic mb-4 flex-grow'>"{quote}"</p>
+      <p className='font-medium text-gray-900'>— {author}</p>
+    </div>
+  </motion.div>
+);
+
+type SuccessStoryCard = {
+  quote: string;
+  author: string;
+};
+
+// Extract color mapping to a constant outside component
+const COLOR_MAP = {
+  blue: {
+    bg: 'bg-blue-50',
+    text: 'text-blue-600',
+    border: 'border-blue-200',
+    hover: 'hover:border-blue-300',
+    gradient: 'from-blue-600 to-blue-500',
+  },
+  green: {
+    bg: 'bg-green-50',
+    text: 'text-green-600',
+    border: 'border-green-200',
+    hover: 'hover:border-green-300',
+    gradient: 'from-green-600 to-green-500',
+  },
+  purple: {
+    bg: 'bg-purple-50',
+    text: 'text-purple-600',
+    border: 'border-purple-200',
+    hover: 'hover:border-purple-300',
+    gradient: 'from-purple-600 to-purple-500',
+  },
+  orange: {
+    bg: 'bg-orange-50',
+    text: 'text-orange-600',
+    border: 'border-orange-200',
+    hover: 'hover:border-orange-300',
+    gradient: 'from-orange-600 to-orange-500',
+  },
+};
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 40, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+};
+
+const cardHover = {
+  y: -8,
+  boxShadow:
+    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+  transition: {
+    type: 'spring',
+    stiffness: 300,
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 export default function CareerTips() {
   const tips = [
     {
@@ -75,83 +176,6 @@ export default function CareerTips() {
     },
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
-  const cardHover = {
-    y: -8,
-    boxShadow:
-      '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-    },
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const colorMap = {
-    blue: {
-      bg: 'bg-blue-50',
-      text: 'text-blue-600',
-      border: 'border-blue-200',
-      hover: 'hover:border-blue-300',
-      gradient: 'from-blue-600 to-blue-500',
-    },
-    green: {
-      bg: 'bg-green-50',
-      text: 'text-green-600',
-      border: 'border-green-200',
-      hover: 'hover:border-green-300',
-      gradient: 'from-green-600 to-green-500',
-    },
-    purple: {
-      bg: 'bg-purple-50',
-      text: 'text-purple-600',
-      border: 'border-purple-200',
-      hover: 'hover:border-purple-300',
-      gradient: 'from-purple-600 to-purple-500',
-    },
-    orange: {
-      bg: 'bg-orange-50',
-      text: 'text-orange-600',
-      border: 'border-orange-200',
-      hover: 'hover:border-orange-300',
-      gradient: 'from-orange-600 to-orange-500',
-    },
-  };
-
   return (
     <div className='bg-gradient-to-b pt-10 from-blue-50 to-white min-h-screen'>
       {/* Hero Section */}
@@ -208,56 +232,53 @@ export default function CareerTips() {
           animate='visible'
           className='grid md:grid-cols-2 gap-8 mb-20'
         >
-          {tips.map((tip, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={cardHover}
-              className={`bg-white rounded-2xl overflow-hidden border ${
-                colorMap[tip.color].border
-              } ${colorMap[tip.color].hover} transition-all duration-300 group`}
-            >
-              <div className='p-8 h-full flex flex-col'>
-                <div className='flex items-center mb-4'>
-                  <div
-                    className={`${
-                      colorMap[tip.color].bg
-                    } p-3 rounded-lg mr-4 transition-all duration-300 group-hover:scale-110`}
-                  >
-                    {tip.icon}
+          {tips.map((tip, index) => {
+            const colors = COLOR_MAP[tip.color];
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={cardHover}
+                className={`bg-white rounded-2xl overflow-hidden border ${colors.border} ${colors.hover} transition-all duration-300 group`}
+              >
+                <div className='p-8 h-full flex flex-col'>
+                  <div className='flex items-center mb-4'>
+                    <div
+                      className={`${colors.bg} p-3 rounded-lg mr-4 transition-all duration-300 group-hover:scale-110`}
+                    >
+                      {tip.icon}
+                    </div>
+                    <h2 className='text-2xl font-bold text-gray-900'>
+                      {tip.title}
+                    </h2>
                   </div>
-                  <h2 className='text-2xl font-bold text-gray-900'>
-                    {tip.title}
-                  </h2>
-                </div>
-                <p className='text-gray-600 mb-6 flex-grow'>{tip.content}</p>
+                  <p className='text-gray-600 mb-6 flex-grow'>{tip.content}</p>
 
-                <div>
-                  <h3 className='font-semibold text-gray-800 mb-3'>
-                    Tips Praktis:
-                  </h3>
-                  <ul className='space-y-3'>
-                    {tip.tips.map((item, i) => (
-                      <motion.li
-                        key={i}
-                        className='flex items-start'
-                        whileHover={{ x: 5 }}
-                      >
-                        <div className='flex-shrink-0 mt-1'>
-                          <div
-                            className={`w-2 h-2 ${
-                              colorMap[tip.color].bg
-                            } rounded-full mr-3`}
-                          ></div>
-                        </div>
-                        <span className='text-gray-700'>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h3 className='font-semibold text-gray-800 mb-3'>
+                      Tips Praktis:
+                    </h3>
+                    <ul className='space-y-3'>
+                      {tip.tips.map((item, i) => (
+                        <motion.li
+                          key={i}
+                          className='flex items-start'
+                          whileHover={{ x: 5 }}
+                        >
+                          <div className='flex-shrink-0 mt-1'>
+                            <div
+                              className={`w-2 h-2 ${colors.bg} rounded-full mr-3`}
+                            ></div>
+                          </div>
+                          <span className='text-gray-700'>{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Success Stories */}
@@ -268,7 +289,7 @@ export default function CareerTips() {
           className='relative mb-20'
         >
           <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl shadow-xl overflow-hidden'>
-            <div className='absolute inset-0 opacity-10 bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+")]'></div>
+            <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
             <div className='absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full transform translate-x-16 -translate-y-16'></div>
             <div className='absolute bottom-0 left-0 w-32 h-32 bg-white opacity-5 rounded-full transform -translate-x-16 translate-y-16'></div>
           </div>
@@ -290,22 +311,11 @@ export default function CareerTips() {
 
             <div className='grid md:grid-cols-2 gap-8'>
               {successStories.map((story, index) => (
-                <motion.div
+                <SuccessStoryCard
                   key={index}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className='bg-white p-6 rounded-xl shadow-lg backdrop-blur-sm bg-opacity-90'
-                >
-                  <div className='flex flex-col h-full'>
-                    <FaQuoteLeft className='text-blue-500 text-2xl mb-4 opacity-30' />
-                    <p className='text-gray-700 italic mb-4 flex-grow'>
-                      "{story.quote}"
-                    </p>
-                    <p className='font-medium text-gray-900'>
-                      — {story.author}
-                    </p>
-                  </div>
-                </motion.div>
+                  quote={story.quote}
+                  author={story.author}
+                />
               ))}
             </div>
           </div>
