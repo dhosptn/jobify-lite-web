@@ -8,7 +8,6 @@ import JobDetail from './pages/JobDetail';
 import JobApply from './pages/JobApply';
 import CareerTips from './pages/CareerTips';
 import AdminDashboard from './pages/AdminDashboard';
-import CompanyDashboard from './pages/CompanyDashboard';
 import CompanyList from './pages/CompanyList';
 import AddJob from './pages/AddJob';
 import Login from './pages/Login';
@@ -58,9 +57,6 @@ function App() {
             </Route>
 
             {/* Company Routes */}
-            <Route element={<PrivateRoute roles={['company']} />}>
-              <Route path='/company/dashboard' element={<CompanyDashboard />} />
-            </Route>
 
             {/* 404 Page */}
             <Route path='*' element={<NotFound />} />
