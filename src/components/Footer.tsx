@@ -49,8 +49,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to='/register' className='text-gray-400 hover:text-white'>
-                  Daftar
+                <Link
+                  to='/companies'
+                  className='text-gray-400 hover:text-white'
+                >
+                  Perusahaan
                 </Link>
               </li>
             </ul>
@@ -66,9 +69,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href='#' className='text-gray-400 hover:text-white'>
+                <Link
+                  to='/career-tips'
+                  className='text-gray-400 hover:text-white'
+                >
                   Tips Karir
-                </a>
+                </Link>
               </li>
               <li>
                 <a href='#' className='text-gray-400 hover:text-white'>

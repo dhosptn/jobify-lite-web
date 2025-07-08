@@ -83,7 +83,7 @@ const MyApplications = () => {
   };
 
   return (
-    <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+    <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
       <div className='mb-8'>
         <h1 className='text-2xl sm:text-3xl font-bold text-gray-900'>
           Lamaran Saya
@@ -324,30 +324,6 @@ const MyApplications = () => {
                               <p className='font-medium text-sm sm:text-base'>
                                 {app.phone || '-'}
                               </p>
-                            </div>
-                          </div>
-                          <div className='flex items-start gap-2 sm:gap-3'>
-                            <div className='p-1.5 sm:p-2 rounded-lg bg-gray-50'>
-                              <FileText className='w-4 h-4 sm:w-5 sm:h-5 text-gray-600' />
-                            </div>
-                            <div>
-                              <p className='text-xs sm:text-sm text-gray-500'>
-                                CV
-                              </p>
-                              {app.cvUrl ? (
-                                <a
-                                  href={app.cvUrl}
-                                  target='_blank'
-                                  rel='noopener noreferrer'
-                                  className='text-blue-600 hover:underline font-medium text-sm sm:text-base'
-                                >
-                                  Download CV
-                                </a>
-                              ) : (
-                                <p className='font-medium text-sm sm:text-base'>
-                                  -
-                                </p>
-                              )}
                             </div>
                           </div>
                         </div>

@@ -4,7 +4,7 @@ import { CheckCircle, ArrowRight, Briefcase } from 'lucide-react';
 
 const SuccessApply = () => {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4'>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 pb-5 pt-20 px-4'>
       <div className='bg-white p-8 sm:p-10 rounded-2xl shadow-xl max-w-md w-full border border-gray-100 transform transition-all hover:shadow-2xl'>
         <div className='flex justify-center mb-6'>
           <div className='bg-green-50 p-4 rounded-full'>

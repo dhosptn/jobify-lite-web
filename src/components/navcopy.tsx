@@ -13,22 +13,14 @@ import {
   X,
   Building,
   Lightbulb,
-  AlertCircle,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-
-  const handleLogout = () => {
-    setShowLogoutConfirm(false);
-    logout();
-    setMobileMenuOpen(false);
-  };
 
   // Animation variants
   const navItemVariants = {
@@ -38,27 +30,6 @@ const Navbar = () => {
     },
     tap: {
       scale: 0.98,
-    },
-  };
-
-  const modalVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-      transition: {
-        duration: 0.15,
-      },
     },
   };
 
@@ -217,7 +188,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.02 }}
               >
                 <motion.button
-                  onClick={() => setShowLogoutConfirm(true)}
+                  onClick={logout}
                   className='flex items-center space-x-1 text-gray-600 hover:text-blue-500 px-2 py-1 rounded hover:bg-gray-100 transition-all'
                   whileHover={{ x: 2 }}
                 >
@@ -411,7 +382,10 @@ const Navbar = () => {
               >
                 <div className='flex-1'>
                   <motion.button
-                    onClick={() => setShowLogoutConfirm(true)} // Changed to show confirmation modal
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
                     className='flex items-center text-sm text-gray-600 hover:text-blue-500 mt-1'
                     whileHover={{ x: 2 }}
                   >
@@ -439,87 +413,6 @@ const Navbar = () => {
           </div>
         </div>
       </motion.div>
-
-      {/* Logout Confirmation Modal */}
-      {/* Logout Confirmation Modal - Centered */}
-      <AnimatePresence>
-        {showLogoutConfirm && (
-          <motion.div
-            className='fixed inset-0 z-[100] flex items-center justify-center p-4'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {/* Backdrop */}
-            <motion.div
-              className='fixed inset-0 bg-black/30 backdrop-blur-sm'
-              onClick={() => setShowLogoutConfirm(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-
-            {/* Modal Container - Centered */}
-            <motion.div
-              className='relative md:mt-auto bg-white rounded-xl shadow-2xl w-full max-w-md mx-4'
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                transition: { type: 'spring', stiffness: 300, damping: 25 },
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.95,
-                y: 10,
-                transition: { duration: 0.2 },
-              }}
-            >
-              <div className='p-6 text-center'>
-                <div className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4'>
-                  <LogOut className='h-5 w-5 text-red-600' />
-                </div>
-
-                <h3 className='text-lg font-semibold text-gray-900 mb-2'>
-                  Konfirmasi Logout
-                </h3>
-                <p className='text-gray-500 mb-6'>
-                  Apakah Anda yakin ingin keluar dari akun Anda?
-                </p>
-
-                <div className='flex gap-3'>
-                  <motion.button
-                    onClick={() => {
-                      setShowLogoutConfirm(false);
-                      setMobileMenuOpen(false);
-                    }}
-                    className='flex-1 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors'
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Batal
-                  </motion.button>
-                  <motion.button
-                    onClick={() => {
-                      handleLogout();
-                      setMobileMenuOpen(false);
-                    }}
-                    className='flex-1 px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white hover:shadow-md transition-all'
-                    whileHover={{
-                      scale: 1.02,
-                      boxShadow: '0 4px 12px -2px rgba(239, 68, 68, 0.4)',
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Logout
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };

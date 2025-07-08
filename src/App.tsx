@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollTop';
 import Home from './pages/Home';
 import JobList from './pages/JobList';
 import JobDetail from './pages/JobDetail';
@@ -8,6 +9,7 @@ import JobApply from './pages/JobApply';
 import CareerTips from './pages/CareerTips';
 import AdminDashboard from './pages/AdminDashboard';
 import CompanyDashboard from './pages/CompanyDashboard';
+import CompanyList from './pages/CompanyList';
 import AddJob from './pages/AddJob';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -16,6 +18,7 @@ import SuccessApply from './pages/SuccessApply';
 import MyApplications from './pages/MyApplications';
 import PrivateRoute from './components/PrivateRoute';
 import { useAuth } from './context/AuthContext';
+import CompanyJobs from './pages/CompanyJobs';
 
 function App() {
   const { loading } = useAuth();
@@ -30,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className='flex flex-col min-h-screen'>
         <Navbar />
         <main className='flex-grow'>
@@ -41,6 +45,9 @@ function App() {
             <Route path='/success-apply' element={<SuccessApply />} />
             <Route path='/my-applications' element={<MyApplications />} />
             <Route path='/career-tips' element={<CareerTips />} />
+            <Route path='/companies' element={<CompanyList />} />
+            <Route path='/perusahaan/:companyName' element={<CompanyJobs />} />
+
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
 

@@ -24,7 +24,7 @@ export default function Login() {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8'>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 mt-10 to-blue-50 py-10 px-4 md:pt-15'>
       {/* Main Card - Only animate the whole card entrance */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
