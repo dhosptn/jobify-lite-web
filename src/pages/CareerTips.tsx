@@ -104,7 +104,6 @@ const fadeIn = {
     opacity: 1,
     transition: {
       duration: 0.8,
-      ease: 'easeInOut',
     },
   },
 };
