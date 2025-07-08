@@ -104,16 +104,15 @@ export default function Home() {
 
               <motion.h1
                 variants={item}
-                className='text-4xl sm:text-5xl md:text-[3.4rem] font-bold text-gray-900 mb-6 leading-[1.15] text-center md:text-left max-w-[20ch] mx-auto md:mx-0'
+                className='text-3xl xs:text-4xl sm:text-[2.7rem] md:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-[1.1] tracking-tight text-center md:text-left'
               >
-                <span className='block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400'>
+                <span className='block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 whitespace-nowrap'>
                   Temukan Pekerjaan
                 </span>
-                <span className='block'>
-                  Yang{' '}
+                <span className='block whitespace-nowrap'>
                   <span className='relative inline-block'>
-                    <span className='relative z-10'>Sesuai Passion</span>
-                    <span className='absolute bottom-1.5 left-0 w-full h-3 bg-indigo-100/80 z-0'></span>
+                    <span className='relative z-10'>Yang Sesuai Passion</span>
+                    <span className='absolute bottom-1 left-0 w-full h-2.5 xs:h-3 bg-indigo-100/80 z-0'></span>
                   </span>
                 </span>
               </motion.h1>
