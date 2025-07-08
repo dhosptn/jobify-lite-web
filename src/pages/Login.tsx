@@ -33,7 +33,7 @@ export default function Login() {
         className='w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row border border-gray-100'
       >
         {/* Illustration Side */}
-        <div className='md:w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 p-7 flex flex-col justify-center relative overflow-hidden'>
+        <div className='hidden md:flex md:w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 p-7 flex-col justify-center relative overflow-hidden'>
           {/* Animated decorative elements */}
           <motion.div
             className='absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/10'
