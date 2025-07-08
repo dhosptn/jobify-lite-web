@@ -20,15 +20,7 @@ import { useAuth } from './context/AuthContext';
 import CompanyJobs from './pages/CompanyJobs';
 
 function App() {
-  const { loading } = useAuth();
-
-  if (loading) {
-    return (
-      <div className='min-h-screen flex items-center justify-center'>
-        <p className='text-gray-600 text-lg'>Memuat aplikasi...</p>
-      </div>
-    );
-  }
+  const { user, logout } = useAuth(); // ✅ hanya gunakan yang tersedia di context
 
   return (
     <BrowserRouter>
@@ -49,10 +41,6 @@ function App() {
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-
-            {/* Admin Routes */}
-
-            {/* Company Routes */}
 
             {/* 404 Page */}
             <Route path='*' element={<NotFound />} />
