@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# 💼 Jobify Lite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Jobify Lite** adalah aplikasi pencari kerja modern berbasis web yang dirancang untuk memberikan pengalaman pengguna yang intuitif dan responsif. Proyek ini dikembangkan sebagai bagian dari portfolio magang saya untuk menunjukkan pemahaman terhadap teknologi fullstack modern, termasuk **Next.js**, **Firebase**, dan **Tailwind CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Authentication**: Firebase Authentication (Google Sign-In)
+- **Database**: Firebase Firestore
+- **Deployment**: Vercel / Firebase Hosting *(optional)*
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🎯 Tujuan Proyek
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Proyek ini bertujuan untuk:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Menerapkan konsep **Fullstack Web Development** dengan framework modern.
+- Mengembangkan aplikasi **auth-protected** berbasis Firebase.
+- Mendesain UI/UX yang **responsif dan profesional** untuk pengguna umum.
+- Mengasah kemampuan dalam penggunaan **real-time database (Firestore)** dan **user session management**.
+
+---
+
+## 🔑 Fitur Utama
+
+- ✅ **Login dengan Google** menggunakan Firebase Authentication
+- 🔎 **Pencarian lowongan kerja** dengan tampilan bersih dan mudah dinavigasi
+- 📌 **Penyimpanan data pekerjaan** di Firebase Firestore
+- 🎨 **Antarmuka responsif** dengan Tailwind CSS
+- 🎬 **Animasi transisi halus** dengan Framer Motion
+- 🔒 **Routing yang dilindungi** (hanya user login yang dapat mengakses halaman tertentu)
+
+---
+
+## 🧪 Cara Menjalankan Proyek (Local Setup)
+
+### 1. Clone repositori
+
+```bash
+git clone https://github.com/username/jobify-lite.git
+cd jobify-lite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Konfigurasi Firebase
+Buat project baru di Firebase Console, lalu aktifkan:
+
+- Authentication (Google Sign-In)
+- Firestore Database
+
+Lalu buat file .env.local dan tambahkan:
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+### 4. Jalankan project
+```bash
+npm run dev
+```
+Akses di http://localhost:3000.
