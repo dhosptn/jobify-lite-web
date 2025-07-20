@@ -106,15 +106,15 @@ export default function Home() {
                 variants={item}
                 className='text-3xl xs:text-4xl sm:text-[2.7rem] md:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-[1.1] tracking-tight text-center md:text-left'
               >
-                <span className='block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 whitespace-nowrap'>
-                  Temukan Pekerjaan
-                </span>
-                <span className='block whitespace-nowrap'>
-                  <span className='relative inline-block'>
+                <div className='inline-block'>
+                  <div className='block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 whitespace-nowrap py-1'>
+                    Temukan Pekerjaan
+                  </div>
+                  <div className='block whitespace-nowrap relative px-1'>
                     <span className='relative z-10'>Yang Sesuai Passion</span>
-                    <span className='absolute bottom-1 left-0 w-full h-2.5 xs:h-3 bg-indigo-100/80 z-0'></span>
-                  </span>
-                </span>
+                    <span className='absolute bottom-1 left-1 right-1 h-2.5 xs:h-3 bg-indigo-100/80 z-0'></span>
+                  </div>
+                </div>
               </motion.h1>
 
               <motion.p

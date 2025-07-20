@@ -7,7 +7,6 @@ import JobList from './pages/JobList';
 import JobDetail from './pages/JobDetail';
 import JobApply from './pages/JobApply';
 import CareerTips from './pages/CareerTips';
-import AdminDashboard from './pages/AdminDashboard';
 import CompanyList from './pages/CompanyList';
 import AddJob from './pages/AddJob';
 import Login from './pages/Login';
